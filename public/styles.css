@@ -1,0 +1,25 @@
+body {
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+}
+
+main {
+    padding: 16px 0;
+    color: #35495e;
+}
+
+.field > input:focus {
+    border-color: salmon;
+}
+
+.button-salmon {
+    background: salmon;
+    border-color: salmon;
+}
+
+#new-book-form {
+    max-width: 90%;
+    width: 100%;
+}

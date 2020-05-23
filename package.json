@@ -1,0 +1,14 @@
+{
+  "name": "intro-to-typescript",
+  "version": "1.0.0",
+  "description": "Intro to TypeScript Project",
+  "main": "index.js",
+  "author": "Badr Choubai",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "lite-server -c ./bs-config.json"
+  },
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
