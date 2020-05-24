@@ -1,2 +1,2 @@
-"use strict";
-console.log("JS Loaded");
+'use strict';
+console.log('JS Loaded');

@@ -20,7 +20,7 @@ export default class Store {
          * MDN Docs on Proxy (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
          */
         let self = this; // alias self to this so that we can refer to this inside of Proxy constructor
-        self.state = new Proxy((params.state || {}), {
+        self.state = new Proxy(params.state || {}, {
             set: function (state, key, value) {
                 state[key] = value;
                 console.log(`stateChange: ${String(key)}: ${value}`);
@@ -30,7 +30,7 @@ export default class Store {
                 }
                 self.status = 'resting';
                 return true;
-            }
+            },
         });
     }
     dispatch(actionKey, payload) {

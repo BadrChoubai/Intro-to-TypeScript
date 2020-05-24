@@ -26,11 +26,11 @@ export default class Store {
          * Set our state to be a Proxy. We are setting the default state by
          * checking the params and defaulting to an empty object if no default
          * state is passed in.
-         * 
+         *
          * MDN Docs on Proxy (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
          */
-        let self: Store = this // alias self to this so that we can refer to this inside of Proxy constructor
-        self.state = new Proxy((params.state || {}), {
+        const self: Store = this; // alias self to this so that we can refer to this inside of Proxy constructor
+        self.state = new Proxy(params.state || {}, {
             set: function (state, key, value): boolean {
                 state[key] = value;
 
@@ -39,19 +39,19 @@ export default class Store {
                 self.events.publish('stateChange', self.state);
 
                 if (self.status !== 'mutation') {
-                    console.warn(`You should use a mutation to set ${String(key)}`)
+                    console.warn(`You should use a mutation to set ${String(key)}`);
                 }
 
                 self.status = 'resting';
 
                 return true;
-            }
-        })
+            },
+        });
     }
 
     dispatch(actionKey: string, payload: unknown): boolean {
         if (typeof this.actions[actionKey] !== 'function') {
-            console.error(`Action "${actionKey}" doesn't exist`)
+            console.error(`Action "${actionKey}" doesn't exist`);
             return false;
         }
 
@@ -73,7 +73,7 @@ export default class Store {
 
         this.status = 'mutation';
 
-        let newState = this.mutations[mutationKey](this.state, payload);
+        const newState = this.mutations[mutationKey](this.state, payload);
         this.state = Object.assign(this.state, newState);
         return true;
     }
