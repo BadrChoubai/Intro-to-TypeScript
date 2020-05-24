@@ -15,7 +15,7 @@ export default class PubSub {
      * @param {Function} callback - callback function
      */
     subscribe(event, callback) {
-        let self = this;
+        const self = this;
         if (!self.events.hasOwnProperty(event)) {
             self.events[event] = [];
         }
@@ -34,7 +34,7 @@ export default class PubSub {
      * @param {object} data
      */
     publish(event, data = {}) {
-        let self = this;
+        const self = this;
         if (!self.events.hasOwnProperty(event)) {
             return [];
         }
