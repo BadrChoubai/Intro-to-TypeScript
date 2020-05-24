@@ -15,12 +15,12 @@ export default class List extends Component {
         this.element.innerHTML = `
             <ul class="app__items">
                 ${store.state.items
-                    .map((item) => {
-                        return `<li>${item.title} By ${item.author} 
+            .map((item) => {
+            return `<li>${item.title} By ${item.author} 
                         <button class="button-salmon" aria-label="Delete this item">x</button>
                     </li>`;
-                    })
-                    .join('')}
+        })
+            .join('')}
             </ul>
         `;
         this.element.querySelectorAll('button').forEach((button, index) => {
