@@ -4,7 +4,7 @@ export default class List extends Component {
     constructor() {
         super({
             store,
-            element: document.querySelector('#book-list')
+            element: document.querySelector('.book-list-container'),
         });
     }
     render() {
@@ -14,11 +14,13 @@ export default class List extends Component {
         }
         this.element.innerHTML = `
             <ul class="app__items">
-                ${store.state.items.map((item) => {
-            return `<li>${item.title} By ${item.author} 
+                ${store.state.items
+                    .map((item) => {
+                        return `<li>${item.title} By ${item.author} 
                         <button class="button-salmon" aria-label="Delete this item">x</button>
                     </li>`;
-        }).join('')}
+                    })
+                    .join('')}
             </ul>
         `;
         this.element.querySelectorAll('button').forEach((button, index) => {
@@ -28,4 +30,3 @@ export default class List extends Component {
         });
     }
 }
-;
