@@ -29,20 +29,19 @@ export default class Store {
          *
          * MDN Docs on Proxy (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy)
          */
-        const self: Store = this; // alias self to this so that we can refer to this inside of Proxy constructor
-        self.state = new Proxy(params.state || {}, {
-            set: function (state, key, value): boolean {
+        this.state = new Proxy(params.state || {}, {
+            set: (state, key, value): boolean => {
                 state[key] = value;
 
                 console.log(`stateChange: ${String(key)}: ${value}`);
 
-                self.events.publish('stateChange', self.state);
+                this.events.publish('stateChange', this.state);
 
-                if (self.status !== 'mutation') {
+                if (this.status !== 'mutation') {
                     console.warn(`You should use a mutation to set ${String(key)}`);
                 }
 
-                self.status = 'resting';
+                this.status = 'resting';
 
                 return true;
             },
