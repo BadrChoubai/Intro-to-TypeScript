@@ -18,13 +18,11 @@ export default class PubSub {
      * @param {Function} callback - callback function
      */
     subscribe(event: string, callback: Function): [] {
-        const self: PubSub = this;
-
-        if (!self.events.hasOwnProperty(event)) {
-            self.events[event] = [];
+        if (!this.events.hasOwnProperty(event)) {
+            this.events[event] = [];
         }
 
-        return self.events[event].push(callback);
+        return this.events[event].push(callback);
     }
 
     /**
@@ -40,12 +38,10 @@ export default class PubSub {
      * @param {object} data
      */
     publish(event: string, data: object = {}): [] {
-        const self: PubSub = this;
-
-        if (!self.events.hasOwnProperty(event)) {
+        if (!this.events.hasOwnProperty(event)) {
             return [];
         }
 
-        return self.events[event].map((callback: Function) => callback(data));
+        return this.events[event].map((callback: Function) => callback(data));
     }
 }

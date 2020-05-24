@@ -15,11 +15,10 @@ export default class PubSub {
      * @param {Function} callback - callback function
      */
     subscribe(event, callback) {
-        const self = this;
-        if (!self.events.hasOwnProperty(event)) {
-            self.events[event] = [];
+        if (!this.events.hasOwnProperty(event)) {
+            this.events[event] = [];
         }
-        return self.events[event].push(callback);
+        return this.events[event].push(callback);
     }
     /**
      * This method first checks to see if the passed in event exists in our collection.
@@ -34,10 +33,9 @@ export default class PubSub {
      * @param {object} data
      */
     publish(event, data = {}) {
-        const self = this;
-        if (!self.events.hasOwnProperty(event)) {
+        if (!this.events.hasOwnProperty(event)) {
             return [];
         }
-        return self.events[event].map((callback) => callback(data));
+        return this.events[event].map((callback) => callback(data));
     }
 }
