@@ -7,3 +7,7 @@ Technologies: TypeScript and Browser APIs \
 ## The Application
 
 The application allows a user to keep track of books they've read, with the option to select whether or not they have completed the book.
+
+### Resources I Found Helpful
+
+[State Management System w/ Vanilla JavaScript](https://css-tricks.com/build-a-state-management-system-with-vanilla-javascript/)
