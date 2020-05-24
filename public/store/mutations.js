@@ -6,5 +6,5 @@ export default {
     clearItem(state, payload) {
         state.items.splice(payload.index, 1);
         return state;
-    }
+    },
 };

@@ -9,7 +9,7 @@ export default class List extends Component {
         });
     }
 
-    render() {
+    render = (): void => {
         if (store.state.items.length === 0) {
             this.element.innerHTML = `<p class="no-items">No books to display.</p>`;
             return;
@@ -32,5 +32,5 @@ export default class List extends Component {
                 store.dispatch('clearItem', { index });
             });
         });
-    }
+    };
 }
