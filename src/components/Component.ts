@@ -1,20 +1,18 @@
 /*eslint no-empty-function: ["error", { "allow": ["functions", "methods"] }]*/
 
-import Store from '../store/index.js';
+import Store from '../store/Store.class.js';
 
 export default class Component {
-    render: any;
+    static render: any;
     element: any;
 
     constructor(props: { [key: string]: any } = {}) {
-        this.render =
-            this.render ||
-            function () {
-                return;
-            };
+        Component.render =
+            Component.render ||
+            function () {};
 
         if (props.store instanceof Store) {
-            props.store.events.subscribe('stateChange', () => this.render()); // https://stackoverflow.com/questions/51439843/unknown-vs-any
+            props.store.events.subscribe('stateChange', () => Component.render()); // https://stackoverflow.com/questions/51439843/unknown-vs-any
         }
 
         if (props.hasOwnProperty('element')) {
